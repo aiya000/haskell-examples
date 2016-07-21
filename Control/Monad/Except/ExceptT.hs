@@ -1,3 +1,4 @@
+-- This is deprecated, You should use EitherT
 import Control.Monad.Except
 import Control.Monad (when)
 
