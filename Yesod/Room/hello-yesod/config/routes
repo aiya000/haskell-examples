@@ -1,0 +1,8 @@
+/static StaticR Static appStatic
+
+/favicon.ico FaviconR GET
+/robots.txt RobotsR GET
+
+/ HomeR GET POST
+/hello HelloR GET
+controlA ControlAR GET
