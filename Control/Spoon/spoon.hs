@@ -11,3 +11,6 @@ chin xs =
   in if maybeHead == Nothing
     then []
     else [fromJust maybeHead]
+
+main :: IO ()
+main = print $ chin ([] :: [Int])
