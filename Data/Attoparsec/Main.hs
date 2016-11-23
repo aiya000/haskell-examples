@@ -40,3 +40,11 @@ main = do
   print $ registersParse "registerg"   -- Left
   print $ registersParse "registers"   -- Right
   print $ registersParse "registerss"  -- Left
+  putStrLn "-"
+  print $ registersParse' "rex"         -- Left
+  print $ registersParse' "reg"         -- Right
+  print $ registersParse' "regist"      -- Right
+  print $ registersParse' "register"    -- Right
+  print $ registersParse' "registerg"   -- Left
+  print $ registersParse' "registers"   -- Right
+  print $ registersParse' "registerss"  -- Left
