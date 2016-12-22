@@ -1,4 +1,4 @@
--- See hxtp://qiixa.com/CyLomw/ixems/7e72e98cfe1c8026df2a
+-- See http://qiita.com/CyLomw/items/7e72e98cfe1c8026df2a
 {-# LANGUAGE TypeFamilies #-}
 
 -- Simply -- {{{
