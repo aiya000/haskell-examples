@@ -11,8 +11,8 @@ class Monoid a where
   (+++)  :: a -> a -> a
 
 -- あるAは法則を満たす
--- x,y,z∈ ==> assoc x y z == True
--- x∈A    ==> ident x     == True
+-- ∀x,y,z∈A   ==> (x +++ y) +++ z = x +++ (y +++ z)
+-- ∃e∈A, x∈A ==> e +++ x = e = x +++ e
 class MonoidLaw a where
   assoc :: a -> a -> a -> Bool
   default assoc :: (Eq a, Monoid a) => a -> a -> a -> Bool
@@ -53,23 +53,23 @@ confirmCompSumIsMonoid = putStrLn $ "CompSum: " ++ (show $ assoc (CompSum (10+))
 
 
 -- Sumは以下のようにしてCompSumに変換することができる
-endoSumToCompSum :: Sum -> CompSum
-endoSumToCompSum (Sum s) = CompSum $ (s+)
+endo :: Sum -> CompSum
+endo (Sum s) = CompSum $ (s+)
 
 -- CompSumは以下のようにしてSumに変換することができる
-endoCompSumToSum :: CompSum -> Sum
-endoCompSumToSum (CompSum f) = Sum $ f 0
+endo' :: CompSum -> Sum
+endo' (CompSum f) = Sum $ f 0
 
 -- （SumからCompSumへ変換できることの確認）
-confirmEndoSumToCompSum :: IO ()
-confirmEndoSumToCompSum = do
+confirmEndo :: IO ()
+confirmEndo = do
   let result = (CompSum (10+)) == endoSumToCompSum (Sum 10)  -- 10は適当に選ばれた元
   putStrLn $ "Sum -> CompSum: " ++ show result
 
 -- （CompSumからSumへ変換できることの確認）
-confirmEndoCompSumToSum :: IO ()
-confirmEndoCompSumToSum = do
-  let result = (Sum 10) == endoCompSumToSum (CompSum (10+))  -- 10は適当に選ばれた元#
+confirmEndo' :: IO ()
+confirmEndo' = do
+  let result = (Sum 10) == endoCompSumToSum (CompSum (10+))  -- 10は適当に選ばれた元
   putStrLn $ "CompSum -> Sum: " ++ show result
 
 
