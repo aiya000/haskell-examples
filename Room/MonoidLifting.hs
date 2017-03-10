@@ -25,6 +25,14 @@ class MonoidLaw a where
 -- モノイドはAである
 instance (Eq a, Monoid a) => MonoidLaw a
 
+data AlwaysTrue = AlwaysTrue
+-- To be compile error
+--instance MonoidLaw AlwaysTrue
+-- If AlwaysTrue isn't Eq instance, you must implement MonoidLaw instance yourself
+instance MonoidLaw AlwaysTrue where
+  assoc _ _ _ = True
+  ident _ = True
+
 -- - >8 - --
 
 -- (Int, 1, +)はモノイドである
