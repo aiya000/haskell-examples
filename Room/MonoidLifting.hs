@@ -4,6 +4,7 @@
 {-# LANGUAGE UndecidableInstances #-}
 
 import Prelude hiding (Monoid, sum)
+import Test.QuickCheck (quickCheck)
 
 -- モノイドは以下のものを持つ
 class Monoid a where
@@ -11,8 +12,8 @@ class Monoid a where
   (+++)  :: a -> a -> a
 
 -- あるAは法則を満たす
--- ∀x,y,z∈A   ==> (x +++ y) +++ z = x +++ (y +++ z)
--- ∃e∈A, x∈A ==> e +++ x = e = x +++ e
+-- ∀x,y,z∈A      ==> (x +++ y) +++ z = x +++ (y +++ z)
+-- ∃zero∈A, x∈A ==> zero +++ x = zero = x +++ zero
 class MonoidLaw a where
   assoc :: a -> a -> a -> Bool
   default assoc :: (Eq a, Monoid a) => a -> a -> a -> Bool
@@ -45,11 +46,13 @@ instance Eq CompSum where
 
 -- （Sumがモノイドであることの確認）
 confirmSumIsMonoid :: IO ()
-confirmSumIsMonoid = putStrLn $ "Sum: " ++ (show $ assoc (Sum 10) (Sum 20) (Sum 30))
+confirmSumIsMonoid = quickCheck $ \(x :: Int) (y :: Int) (z :: Int) ->
+  assoc (Sum x) (Sum y) (Sum z)
 
 -- （CompSumがモノイドであることの確認）
 confirmCompSumIsMonoid :: IO ()
-confirmCompSumIsMonoid = putStrLn $ "CompSum: " ++ (show $ assoc (CompSum (10+)) (CompSum (20+)) (CompSum (30+)))
+confirmCompSumIsMonoid = quickCheck $ \(x :: Int) (y :: Int) (z :: Int) ->
+  assoc (CompSum (x+)) (CompSum (y+)) (CompSum (z+))
 
 
 -- Sumは以下のようにしてCompSumに変換することができる
@@ -62,21 +65,19 @@ endo' (CompSum f) = Sum $ f 0
 
 -- （SumからCompSumへ変換できることの確認）
 confirmEndo :: IO ()
-confirmEndo = do
-  let result = (CompSum (10+)) == endoSumToCompSum (Sum 10)  -- 10は適当に選ばれた元
-  putStrLn $ "Sum -> CompSum: " ++ show result
+confirmEndo = quickCheck $ \(x :: Int) ->
+  (CompSum (x+)) == endo (Sum x)
 
 -- （CompSumからSumへ変換できることの確認）
 confirmEndo' :: IO ()
-confirmEndo' = do
-  let result = (Sum 10) == endoCompSumToSum (CompSum (10+))  -- 10は適当に選ばれた元
-  putStrLn $ "CompSum -> Sum: " ++ show result
+confirmEndo' = quickCheck $ \(x :: Int) ->
+  (Sum x) == endo' (CompSum (x+))
 
 
 -- 確認の実行
 main :: IO ()
 main = do
-  confirmSumIsMonoid
-  confirmCompSumIsMonoid
-  confirmEndoSumToCompSum
-  confirmEndoCompSumToSum
+  putStr "Is Sum is Monoid ?     >> " >> confirmSumIsMonoid
+  putStr "Is CompSum is Monoid ? >> " >> confirmCompSumIsMonoid
+  putStr "endomorphism of (Sum -> CompSum) >>" >> confirmEndo
+  putStr "endomorphism of (CompSum -> Sum) >>" >> confirmEndo'
