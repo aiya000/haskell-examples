@@ -32,7 +32,7 @@ instance (Eq a, Monoid a) => MonoidLaw a
 newtype Sum = Sum { unSum :: Int }
   deriving (Eq, Show)
 instance Monoid Sum where
-  zero = Sum 1
+  zero = Sum 0
   (Sum x) +++ (Sum y) = Sum $ x + y
 
 -- (Int -> Int, (0+), .)はモノイドである
