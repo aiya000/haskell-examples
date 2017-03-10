@@ -46,13 +46,19 @@ instance Eq CompSum where
 
 -- （Sumがモノイドであることの確認）
 confirmSumIsMonoid :: IO ()
-confirmSumIsMonoid = quickCheck $ \(x :: Int) (y :: Int) (z :: Int) ->
-  assoc (Sum x) (Sum y) (Sum z)
+confirmSumIsMonoid = do
+  quickCheck $ \(x :: Int) (y :: Int) (z :: Int) ->
+    assoc (Sum x) (Sum y) (Sum z)
+  quickCheck $ \(x :: Int) ->
+    ident (Sum x)
 
 -- （CompSumがモノイドであることの確認）
 confirmCompSumIsMonoid :: IO ()
-confirmCompSumIsMonoid = quickCheck $ \(x :: Int) (y :: Int) (z :: Int) ->
-  assoc (CompSum (x+)) (CompSum (y+)) (CompSum (z+))
+confirmCompSumIsMonoid = do
+  quickCheck $ \(x :: Int) (y :: Int) (z :: Int) ->
+    assoc (CompSum (x+)) (CompSum (y+)) (CompSum (z+))
+  quickCheck $ \(x :: Int) ->
+    ident (CompSum (x+))
 
 
 -- Sumは以下のようにしてCompSumに変換することができる
@@ -77,7 +83,17 @@ confirmEndo' = quickCheck $ \(x :: Int) ->
 -- 確認の実行
 main :: IO ()
 main = do
-  putStr "Is Sum is Monoid ?     >> " >> confirmSumIsMonoid
-  putStr "Is CompSum is Monoid ? >> " >> confirmCompSumIsMonoid
-  putStr "endomorphism of (Sum -> CompSum) >>" >> confirmEndo
-  putStr "endomorphism of (CompSum -> Sum) >>" >> confirmEndo'
+  putStrLn "Is Sum is Monoid ?"
+  confirmSumIsMonoid
+  putStrLn ""
+
+  putStrLn "Is CompSum is Monoid ?"
+  confirmCompSumIsMonoid
+  putStrLn ""
+
+  putStrLn "endomorphism of (Sum -> CompSum)"
+  confirmEndo
+  putStrLn ""
+
+  putStrLn "endomorphism of (CompSum -> Sum)"
+  confirmEndo'
