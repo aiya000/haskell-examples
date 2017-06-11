@@ -1,4 +1,5 @@
 import Control.Exception.Safe (MonadThrow, try, SomeException, throwM, Exception)
+import Control.Monad (join)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.Morph (MMonad, embed)
 import Control.Monad.Trans.Class (lift)
@@ -12,11 +13,8 @@ instance Exception AnException
 
 instance MMonad (EitherT e) where
   embed f m = EitherT $ do
-    x <- runEitherT . f $ runEitherT m
-    return $ case x of
-      Left e          -> Left e
-      Right (Left e') -> Left e'
-      Right (Right a) -> Right a
+    let nee = runEitherT . f $ runEitherT m -- :: n (Either e (Either e a))
+    join <$> nee
 
 
 check :: IO a -> EitherT SomeException IO a
