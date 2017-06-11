@@ -1,4 +1,4 @@
-import Control.Exception.Safe (MonadCatch, try, SomeException, throwM, Exception)
+import Control.Exception.Safe (MonadThrow, try, SomeException, throwM, Exception)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.Morph (MMonad, embed)
 import Control.Monad.Trans.Class (lift)
@@ -22,7 +22,7 @@ instance MMonad (EitherT e) where
 check :: IO a -> EitherT SomeException IO a
 check = EitherT . try
 
-program :: (MonadCatch m, MonadIO m) => m String
+program :: (MonadThrow m, MonadIO m) => m String
 program = liftIO . throwM $ AnException "nico"
 
 
