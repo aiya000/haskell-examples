@@ -1,4 +1,4 @@
-import Control.Exception.Safe (MonadThrow, try, SomeException, throwM, Exception)
+import Control.Exception.Safe (MonadThrow, try, SomeException, Exception)
 import Control.Monad (join)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.Morph (MMonad, embed)
@@ -21,7 +21,7 @@ check :: IO a -> EitherT SomeException IO a
 check = EitherT . try
 
 program :: (MonadThrow m, MonadIO m) => m String
-program = liftIO . throwM $ AnException "nico"
+program = liftIO $ fail "an exception of IO"
 
 
 main :: IO ()
@@ -33,4 +33,4 @@ main = do
 
 
 -- output
--- Left value is got !: AnException "nico"
+-- Left value is got !: user error (an exception of IO)
