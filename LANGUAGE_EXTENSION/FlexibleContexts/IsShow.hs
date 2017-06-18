@@ -1,0 +1,1 @@
+../NoMonomorphismRestriction/Main.hs
