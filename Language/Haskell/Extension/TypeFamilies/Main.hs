@@ -29,5 +29,18 @@ type instance Func' a = Int
 -- `Func' Char` and `Func' a` are conflicted x(
 
 
+type family Func'' a b :: *
+type instance Func'' Int Int  = Int
+type instance Func'' Int Char = Char
+type instance Func'' Char b = Bool
+
+
+-- patter-match can be used
+type family F a
+type instance F (Maybe Int)  = Int
+type instance F (Maybe Char) = Char
+type instance F Char         = Bool
+
+
 main :: IO ()
 main = return ()
