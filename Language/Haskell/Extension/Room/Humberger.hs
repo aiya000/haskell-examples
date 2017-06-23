@@ -11,7 +11,7 @@ data Topping = Space -- ^ A space can be inserted some @Topping@
 --    (h :: Humberger (a :: Topping) (b :: Topping) (c :: Topping) (d :: Topping))
 --    (t :: Topping)
 --    :: Humberger (a :: Topping) (b :: Topping) (c :: Topping) (d :: Topping) where
-type family AddTopping (h :: HumbergerT Topping Topping Topping Topping) (t :: Topping) :: HumbergerT Topping Topping Topping Topping where
+type family AddTopping (h :: HumbergerT) (t :: Topping) :: HumbergerT where
   AddTopping (HumbergerC Space b c d) t = HumbergerC t b c d
   AddTopping (HumbergerC a Space c d) t = HumbergerC a t c d
   AddTopping (HumbergerC a b Space d) t = HumbergerC a b t d
@@ -19,11 +19,11 @@ type family AddTopping (h :: HumbergerT Topping Topping Topping Topping) (t :: T
   AddTopping (HumbergerC _ _ _ _)     _ = Fail
   AddTopping Fail                     _ = Fail
 
-data Humberger (h :: HumbergerT Topping Topping Topping Topping) where
+data Humberger (h :: HumbergerT) where
      Refl :: Humberger (HumbergerC a b c d)
 
-data HumbergerT a b c d
-   = HumbergerC a b c d
+data HumbergerT
+   = HumbergerC Topping Topping Topping Topping
    | Fail
 
 type BasicHumberger = HumbergerC Space Space Space Space
