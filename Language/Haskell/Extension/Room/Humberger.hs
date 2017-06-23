@@ -15,12 +15,16 @@ type family AddTopping (h :: HumbergerT Topping Topping Topping Topping) (t :: T
   AddTopping (HumbergerC Space b c d) t = HumbergerC t b c d
   AddTopping (HumbergerC a Space c d) t = HumbergerC a t c d
   AddTopping (HumbergerC a b Space d) t = HumbergerC a b t d
-  AddTopping (HumbergerC a b c Space) t = HumbergerC a b c t
+  AddTopping (HumbergerC a b c Space) t = HumbergerC a b c d
+  AddTopping (HumbergerC _ _ _ _)     _ = Fail
+  AddTopping Fail                     _ = Fail
 
-data Humberger (h :: HumbergerT Topping Topping Topping Topping)
-   = Refl
+data Humberger (h :: HumbergerT Topping Topping Topping Topping) where
+     Refl :: Humberger (HumbergerC a b c d)
 
-data HumbergerT a b c d = HumbergerC a b c d
+data HumbergerT a b c d
+   = HumbergerC a b c d
+   | Fail
 
 type BasicHumberger = HumbergerC Space Space Space Space
 
@@ -34,7 +38,7 @@ x1 = Refl :: Humberger Humberger1
 x2 = Refl :: Humberger Humberger2
 x3 = Refl :: Humberger Humberger3
 x4 = Refl :: Humberger Humberger4
-x5 = Refl :: Humberger Humberger5 -- This is the compile error because Refl is not a Fail's value
+-- x5 = Refl :: Humberger Humberger5 -- This is the compile error because Refl is not a Fail's value
 
 
 main :: IO ()
