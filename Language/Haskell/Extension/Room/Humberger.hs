@@ -15,7 +15,7 @@ type family AddTopping (h :: HumbergerT) (t :: Topping) :: HumbergerT where
   AddTopping (HumbergerC Space b c d) t = HumbergerC t b c d
   AddTopping (HumbergerC a Space c d) t = HumbergerC a t c d
   AddTopping (HumbergerC a b Space d) t = HumbergerC a b t d
-  AddTopping (HumbergerC a b c Space) t = HumbergerC a b c d
+  AddTopping (HumbergerC a b c Space) t = HumbergerC a b c t
   AddTopping (HumbergerC _ _ _ _)     _ = Fail
   AddTopping Fail                     _ = Fail
 
