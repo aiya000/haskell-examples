@@ -1,6 +1,12 @@
 {-# LANGUAGE DataKinds #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE GADTs #-}
+{-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE TypeFamilies #-}
+
+module Hamberger where
+
+import Hamburger.TH
 
 -- | A kind of the topping, and types.
 data Topping = Space -- ^ Mean a space, it can be inserted some @Topping@
@@ -19,15 +25,30 @@ type family AddTopping (h :: HamburgerT) (t :: Topping) :: HamburgerT where
   AddTopping (HamburgerC a b c Space) t = HamburgerC a b c t
   AddTopping _ _ = Fail
 
--- |
--- A concrete of the hamburger
--- (A type constructor for a type of @HamburgerT@ kind).
-data Hamburger (h :: HamburgerT) where
-  Refl :: Hamburger (HamburgerC a b c d)
-
 -- | A kind of the abstract hamburger
 data HamburgerT = HamburgerC Topping Topping Topping Topping -- ^ A type constructor of the abstract hamburger
                 | Fail -- ^ Mean a fail of a mapping of @AddTopping@
+
+
+{- The dependent type -}
+
+-- |
+-- A concrete of the hamburger
+-- (A type constructor for a type of @HamburgerT@ kind).
+data SHamburger (h :: HamburgerT) where
+  Concrete :: STopping -> STopping -> STopping -> STopping -> SHamburger (HamburgerC a b c d :: HamburgerT)
+
+-- | A singleton type for @Topping@ kind.
+data STopping = SSpace | SCheese | STomato | SMeet | SUshi
+  deriving (Show)
+
+-- | Represent the simply dependent type
+class Singleton (h :: HamburgerT) where
+  sing :: SHamburger h
+
+
+-- Define any instances for 126 patterns !
+defineInstances
 
 
 type BasicHamburgerC = HamburgerC Space Space Space Space
@@ -38,12 +59,24 @@ type HamburgerC3 = AddTopping HamburgerC2 Meet
 type HamburgerC4 = AddTopping HamburgerC3 Ushi
 type HamburgerC5 = AddTopping HamburgerC4 Ushi -- = Fail
 
-x1 = Refl :: Hamburger HamburgerC1
-x2 = Refl :: Hamburger HamburgerC2
-x3 = Refl :: Hamburger HamburgerC3
-x4 = Refl :: Hamburger HamburgerC4
---x5 = Refl :: Hamburger HamburgerC5 -- This is the compile error because Refl is not a Fail's value
+x0 = sing :: SHamburger BasicHamburgerC
+x1 = sing :: SHamburger HamburgerC1
+x2 = sing :: SHamburger HamburgerC2
+x3 = sing :: SHamburger HamburgerC3
+x4 = sing :: SHamburger HamburgerC4
+--x5 = sing :: SHamburger HamburgerC5 -- This is the compile error because Refl is not a Fail's value
 
 
 main :: IO ()
-main = return ()
+main = do
+  print x0
+  print x1
+  print x2
+  print x3
+  print x4
+-- vvv output vvv
+-- SHamburger (Space Space Space Space)
+-- SHamburger (Cheese Space Space Space)
+-- SHamburger (Cheese Tomato Space Space)
+-- SHamburger (Cheese Tomato Meet Space)
+-- SHamburger (Cheese Tomato Meet Ushi)
