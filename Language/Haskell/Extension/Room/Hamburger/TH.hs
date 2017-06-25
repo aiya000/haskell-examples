@@ -2,7 +2,7 @@
 
 module Hamburger.TH where
 
-import Language.Haskell.TH
+import Language.Haskell.TH (Type(..), Name, mkName, Exp(..), DecsQ, Dec(..), Clause(..), Pat(..), Body(..), Lit(..))
 
 type TypeName = String
 

@@ -6,7 +6,7 @@
 
 module Hamberger where
 
-import Hamburger.TH
+import Hamburger.TH (defineInstances)
 
 -- | A kind of the topping, and types.
 data Topping = Space -- ^ Mean a space, it can be inserted some @Topping@
