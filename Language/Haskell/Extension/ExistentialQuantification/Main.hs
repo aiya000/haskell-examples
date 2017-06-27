@@ -1,14 +1,15 @@
 {-# LANGUAGE ExistentialQuantification #-}
 
--- A type for heterogeneous list
-data TypeConfuser = forall x. Show x => TypeConfuser x
+-- A existential type
+data Shown = forall a. Show a => Shown a
 
-instance Show TypeConfuser where
-  show (TypeConfuser x) = show x
+instance Show Shown where
+  show (Shown x) = show x
 
-
-heteroList :: [TypeConfuser]
-heteroList = [TypeConfuser 10, TypeConfuser 10.0, TypeConfuser "10"]
+heteroList :: [Shown]
+heteroList = [Shown 10, Shown 10.0, Shown "10"]
 
 main :: IO ()
 main = print heteroList
+-- vvv output vvv
+--[10,10.0,"10"]
