@@ -1,1 +1,1 @@
-../../Room/MonoidLifting.hs
+../../../../Room/MonoidLifting.hs
