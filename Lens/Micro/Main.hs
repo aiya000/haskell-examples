@@ -21,8 +21,8 @@ makeLenses ''BigStr
 
 main :: IO ()
 main = do
-  let a  = Str 10 "ahoge"
-      a' = execState context a
+  let a  = execState context $ Str 10 "ahoge"
+      a' = execState bigContext $ BigStr (Str 20 "sugar") 30
   print a
   print a'
   let big = BigStr (Str 1 "chinchin") 2
@@ -32,3 +32,7 @@ context :: State Str ()
 context = do
   x .= 20
   y .= "baka"
+
+bigContext :: State BigStr ()
+bigContext = do
+  str.x .= 100
