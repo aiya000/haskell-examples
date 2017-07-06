@@ -1,5 +1,4 @@
 {-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE Rank2Types #-}
 {-# LANGUAGE TypeOperators #-}
 
 import Control.Eff (Eff, Member, run, (:>))
@@ -45,24 +44,30 @@ main = do
       (z, ())  = run $ runState zero h
       -- The type specification is important in extensible-effects (eff often cannot inference)
       (x', ()) = run $ runMonoidWriter (f :: Eff (Writer Logs :> r) ())
-      -- runFoo comsumes `a_{n-1}` of `a_1 :> a_2 :> .. :> a_{n-1} :> a_n`.
+      -- runFoo comsumes a first type of `a :> b :> ... :> Void`
       -- `run` finishes chains of runFoo.
       x'' = run . runWriter (++) zero
                 . flip runReader zero
-                . runWriter (++) zero
-                . flip runReader zero
                 $ (k :: Eff (Reader Logs :>
-                             Writer Logs :>
-                             Reader Logs :>
                              Writer Logs :> r) Logs)
+      x''' = run . runWriter (++) zero
+               . flip runReader zero
+               . runWriter (++) zero
+               . flip runReader zero
+               $ (k :: Eff (Reader Logs :>
+                            Writer Logs :>
+                            Reader Logs :>
+                            Writer Logs :> r) Logs)
   print x
   print y
   print z
   print x'
   print x''
+  print x'''
 -- vvv output vvv
 -- ["f"]
 -- ["g"]
 -- ["h"]
 -- ["f"]
+-- (["k"],["k"])
 -- ([],(["k"],["k"]))
