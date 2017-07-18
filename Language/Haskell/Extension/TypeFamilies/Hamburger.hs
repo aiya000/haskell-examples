@@ -1,1 +1,1 @@
-../Room/Humberger.hs
+../Room/Hamburger.hs
