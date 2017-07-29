@@ -1,22 +1,19 @@
-{-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE TemplateHaskell #-}
 
 import Control.Lens ((^?))
 import Control.Lens.Prism (Prism', prism')
+import Control.Lens.TH (makePrisms)
 
 data Mine a = My a
             | Yours
   deriving (Show)
 
-
-my :: Prism' (Mine a) a
-my = prism' My $ \case
-  My x -> Just x
-  Yours -> Nothing
+makePrisms ''Mine
 
 
 main :: IO ()
 main = do
-  let x = My 10 ^? my
-      y = (Yours :: Mine Int) ^? my
+  let x = My 10 ^? _My
+      y = (Yours :: Mine Int) ^? _My
   print x
   print y
