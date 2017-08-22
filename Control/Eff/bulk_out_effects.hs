@@ -1,33 +1,27 @@
 {-# LANGUAGE TypeOperators #-}
 
+{-# LANGUAGE TypeOperators #-}
+
+import Control.Arrow ((>>>))
 import Control.Eff (Eff, (:>), run)
-import Control.Eff.Exception (Exc)
-import Control.Eff.Writer.Lazy (Writer, runWriter)
+import Control.Eff.Exception (Exc, runExc, liftEither)
+import Control.Eff.Lift (Lift)
 import Data.Void (Void)
 
--- | A concrete `Eff`
-type MyEff = Eff (Exc String :> Writer Int :> Void)
+type PureComputation = Eff (Exc () :> Void)
+type ImpureComputation = Eff (Exc () :> Lift IO :> Void)
 
--- | A concrete `Eff` too
-type YourEff = Eff (Writer Int :> Void)
+pureCompute :: PureComputation ()
+pureCompute = return ()
 
-{-
-  MyEff > YourEff
--}
+impureCompute :: ImpureComputation ()
+impureCompute = return ()
 
-mine :: MyEff ()
-mine = return ()
+upgrade :: PureComputation a -> ImpureComputation a
+upgrade = runExc >>> run >>> liftEither
 
-yours :: YourEff ()
-yours = return ()
-
---NOTE: A Free with Union convertion maybe needed
--- | Increase your effect
-yoursIsMine :: YourEff a -> MyEff a
-yoursIsMine = return . snd . run . runWriter (+) 0
-
-mine' :: MyEff ()
-mine' = yoursIsMine yours
+impureCompute' :: ImpureComputation ()
+impureCompute' = upgrade pureCompute
 
 main :: IO ()
 main = return ()
