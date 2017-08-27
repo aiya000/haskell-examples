@@ -1,3 +1,7 @@
+
+# Created by https://www.gitignore.io/api/haskell
+
+### Haskell ###
 dist
 dist-*
 cabal-dev
@@ -9,11 +13,15 @@ cabal-dev
 *.dyn_hi
 .hpc
 .hsenv
+.cabal-sandbox/
 cabal.sandbox.config
 *.prof
 *.aux
 *.hp
 *.eventlog
+.stack-work/
 cabal.project.local
-**/.cabal-sandbox/
-**/.stack-work/
+.HTF/
+learning-haskell.cabal
+
+# End of https://www.gitignore.io/api/haskell
