@@ -1,7 +1,0 @@
-ul
-    li.english
-        color: green;
-    li.chinese
-        color: red
-    li.japanese
-        color: blue;
