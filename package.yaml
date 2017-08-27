@@ -1,0 +1,16 @@
+name: learning-haskell
+version: 0.1.0.0
+category: Simple
+author: aiya000
+maintainer: aiya000 <aiya000.develop@gmail.com>
+copyright: aiya000
+license: MIT
+homepage: https://github.com/aiya000/learning-haskell
+
+dependencies:
+    - base >= 4.7 && < 5
+
+executables:
+  fake:
+    main: Main.hs
+    source-dirs: .
