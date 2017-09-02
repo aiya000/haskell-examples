@@ -16,6 +16,11 @@ dependencies:
   - lens
   - mtl
   - transformers
+  - http-client
+  - conduit
+  - conduit-extra
+  - http-conduit
+  - connection
 
 executables:
   fake:
