@@ -10,17 +10,18 @@ homepage: https://github.com/aiya000/learning-haskell
 dependencies:
   - base >= 4.7 && < 5
   - cmdargs
+  - conduit
+  - conduit-extra
+  - connection
   - extensible
   - extensible-effects
   - freer-effects
+  - http-client
+  - http-conduit
   - lens
   - mtl
+  - safe-exceptions
   - transformers
-  - http-client
-  - conduit
-  - conduit-extra
-  - http-conduit
-  - connection
 
 executables:
   fake:
