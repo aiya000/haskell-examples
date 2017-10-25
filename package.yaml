@@ -15,6 +15,7 @@ dependencies:
   - connection
   - extensible
   - extensible-effects
+  - free
   - freer-effects
   - http-client
   - http-conduit
