@@ -1,6 +1,6 @@
 {-# LANGUAGE LambdaCase #-}
 
-import Control.Lens ((^?))
+import Control.Lens ((^?), (&), (.~))
 import Control.Lens.Prism (Prism', prism')
 
 data Mine a = My a
@@ -17,6 +17,8 @@ my = prism' My $ \case
 main :: IO ()
 main = do
   let x = My 10 ^? my
-      y = (Yours :: Mine Int) ^? my
   print x
+  let y = (Yours :: Mine Int) ^? my
   print y
+  let x' = (Yours :: Mine Int) & my .~ 20
+  print x'
