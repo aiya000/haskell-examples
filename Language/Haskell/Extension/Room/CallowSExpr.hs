@@ -7,12 +7,14 @@ data SExpr = Cons SExpr SExpr | AtomInt Int
 newtype CallowSExpr = CallowSExpr { growUp :: SExpr }
   deriving (Show)
 
+-- uni-directional synonyms
 pattern AtomInt' :: Int -> CallowSExpr
 pattern AtomInt' x = CallowSExpr (AtomInt x)
 
 pattern LightCons' :: SExpr -> SExpr -> CallowSExpr
 pattern LightCons' x y = CallowSExpr (Cons x y)
 
+-- explicitly-bidirectional pattern synonyms
 pattern Cons' :: CallowSExpr -> CallowSExpr -> CallowSExpr
 pattern Cons' x y <- LightCons' (CallowSExpr -> x) (CallowSExpr -> y)
   where
