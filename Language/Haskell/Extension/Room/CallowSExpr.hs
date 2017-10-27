@@ -11,14 +11,11 @@ newtype CallowSExpr = CallowSExpr { growUp :: SExpr }
 pattern AtomInt' :: Int -> CallowSExpr
 pattern AtomInt' x = CallowSExpr (AtomInt x)
 
-pattern LightCons' :: SExpr -> SExpr -> CallowSExpr
-pattern LightCons' x y = CallowSExpr (Cons x y)
-
 -- explicitly-bidirectional pattern synonyms
 pattern Cons' :: CallowSExpr -> CallowSExpr -> CallowSExpr
-pattern Cons' x y <- LightCons' (CallowSExpr -> x) (CallowSExpr -> y)
+pattern Cons' x y <- CallowSExpr (Cons (CallowSExpr -> x) (CallowSExpr -> y))
   where
-    Cons' a b = LightCons' (growUp a) (growUp b)
+    Cons' a b = CallowSExpr (Cons (growUp a) (growUp b))
 
 
 main :: IO ()
