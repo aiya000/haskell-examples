@@ -22,6 +22,8 @@ dependencies:
   - lens
   - mtl
   - safe-exceptions
+  - singleton-bool
+  - singletons
   - transformers
 
 executables:
