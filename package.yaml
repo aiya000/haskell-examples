@@ -20,7 +20,9 @@ dependencies:
   - http-client
   - http-conduit
   - lens
+  - lens-regex
   - mtl
+  - regex-posix
   - safe-exceptions
   - singleton-bool
   - singletons
