@@ -20,9 +20,11 @@ newtype instance Sing (BarT n) = Bar Integer
 newtype instance Sing (BazT s) = Baz String
 
 instance KnownNat n => SingI (BarT n) where
+  sing :: (Sing (BarT n) :: *)
   sing = Bar $ natVal (Proxy :: Proxy n)
 
 instance KnownSymbol s => SingI (BazT s) where
+  sing :: (Sing (BazT s) :: *)
   sing = Baz $ symbolVal (Proxy :: Proxy s)
 
 main :: IO ()
