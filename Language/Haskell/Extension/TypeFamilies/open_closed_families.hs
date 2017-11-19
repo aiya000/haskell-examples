@@ -34,3 +34,42 @@ type GY = G Char -- Void
 
 type GZ = G Bool -- GZ
 -- ^ (🤔!?)
+
+-- open data families
+data family F' (x :: *)
+data instance F' Int = FInt
+
+type F'X = F' Int
+
+f'x :: F'X
+f'x = FInt
+
+
+data family G' (x :: k)
+
+-- A closed data families for a kind
+data instance G' (x :: *) where
+  G'Int  :: G' Int
+  G'Char :: () -> G' Char
+
+data Foo = Bar | Baz
+
+data instance G' (x :: Foo) where
+  G'Bar :: G' 'Bar
+  G'Baz :: () -> G' 'Baz
+
+g'x :: G' Int
+g'x = G'Int
+
+g'y :: G' Char
+g'y = G'Char ()
+
+g'bar :: G' 'Bar
+g'bar = G'Bar
+
+g'baz :: (G' 'Baz :: *)
+g'baz = G'Baz ()
+
+
+main :: IO ()
+main = return ()
