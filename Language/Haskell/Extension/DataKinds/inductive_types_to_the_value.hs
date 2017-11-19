@@ -6,21 +6,21 @@
 {-# LANGUAGE TypeFamilies #-}
 
 import Data.Proxy (Proxy(..))
-import Data.Singletons (SingI(..), Sing, SingKind(..), SomeSing(..))
+--import Data.Singletons (SingI(..), Sing, SingKind(..), SomeSing(..))
 
 -- | inductive structure
 data Foo = Foo Foo | End
 
-data instance Sing End = EndS
-newtype instance Sing ('Foo x) = FooS (Sing x)
-
-instance SingI 'End where
-  sing :: Sing 'End
-  sing = EndS
-
-instance SingI a => SingI ('Foo a) where
-  sing :: Sing ('Foo a)
-  sing = FooS (sing :: Sing a)
+--data instance Sing End = EndS
+--newtype instance Sing ('Foo x) = FooS (Sing x)
+--
+--instance SingI 'End where
+--  sing :: Sing 'End
+--  sing = EndS
+--
+--instance SingI a => SingI ('Foo a) where
+--  sing :: Sing ('Foo a)
+--  sing = FooS (sing :: Sing a)
 
 
 -- | the isomorphic type for 'Foo'
