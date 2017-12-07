@@ -17,6 +17,7 @@ dependencies:
   - extensible-effects
   - free
   - freer-effects
+  - ghc-prim
   - http-client
   - http-conduit
   - lens
