@@ -1,16 +1,16 @@
 {-# LANGUAGE FlexibleInstances #-}
 
-class One a where
+class Identical a where
   id' :: a -> a
   id' = id
 
-data High a = High deriving (Show)
+data Foo a = Foo
+  deriving (Show)
 
--- An instance for partial High (FlexibleInstances)
-instance One (High Int)
-
+-- An instance of the part
+instance Identical (Foo Int)
 
 main :: IO ()
 main = do
-  print . id' $ (High :: High Int)
-  --print . id' $ (High :: High Char)
+  print $ id' (Foo :: Foo Int)
+  --print $ id' (Foo :: Foo Char)
