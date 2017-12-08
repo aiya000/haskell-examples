@@ -1,16 +1,20 @@
 {-# LANGUAGE DataKinds #-}
-{-# LANGUAGE KindSignatures #-}
 
-data KindFoo = TypeFoo
+-- X :: [*]
+type X = '[Int, Char]
 
-data Foo (a :: KindFoo) = Refl
+data AKind = TypeX | TypeY
 
-x :: Foo TypeFoo
-x = Refl
+-- Y :: [AKind]
+type Y = '[TypeX, TypeY]
 
--- to be compile error
---y :: Foo Int
---y = Refl
+data ContainerKind a = Container a
+
+-- Z :: ContainerKind *
+type Z = Container Int
+
+-- Z' :: ContainerKind AKind
+type Z' = Container TypeX
 
 main :: IO ()
 main = return ()
