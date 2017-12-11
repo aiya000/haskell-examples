@@ -13,3 +13,5 @@ fromInteger _ = ";P"
 
 main :: IO ()
 main = putStrLn 1
+-- {output}
+-- ;P
