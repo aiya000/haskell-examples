@@ -26,3 +26,5 @@ learning-haskell.cabal
 tags
 
 # End of https://www.gitignore.io/api/haskell
+01_eta/**/*.jar
+01_eta/**/*.class
