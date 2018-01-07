@@ -29,6 +29,8 @@ dependencies:
   - singleton-bool
   - singletons
   - suspend
+  - time-out
+  - time-units
   - timers
   - transformers
 
