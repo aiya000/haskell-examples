@@ -21,15 +21,19 @@ dependencies:
   - free
   - freer-effects
   - ghc-prim
+  - here
   - http-client
   - http-conduit
+  - interpolate
   - lens
   - lens-regex
   - mtl
+  - raw-strings-qq
   - regex-posix
   - safe-exceptions
   - singleton-bool
   - singletons
+  - string-qq
   - suspend
   - time-out
   - time-units
