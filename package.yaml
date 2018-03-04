@@ -8,6 +8,8 @@ license: MIT
 homepage: https://github.com/aiya000/learning-haskell
 
 dependencies:
+  - QuasiText
+  - QuickCheck
   - base >= 4.7 && < 5
   - cmdargs
   - conduit
