@@ -24,6 +24,7 @@ dependencies:
   - here
   - http-client
   - http-conduit
+  - idris
   - interpolate
   - lens
   - lens-regex
