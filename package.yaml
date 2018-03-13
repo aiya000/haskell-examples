@@ -29,6 +29,7 @@ dependencies:
   - lens
   - lens-regex
   - mtl
+  - parsers
   - raw-strings-qq
   - regex-posix
   - safe-exceptions
@@ -40,6 +41,7 @@ dependencies:
   - time-units
   - timers
   - transformers
+  - trifecta
 
 executables:
   fake:
