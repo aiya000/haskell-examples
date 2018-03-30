@@ -42,3 +42,9 @@ dependencies:
   - timers
   - transformers
   - trifecta
+
+executables:
+  # stack build --profile && stack exec ghc-callstack
+  ghc-callstack:
+    source-dirs: GHC/Stack
+    main: Main.hs
