@@ -42,8 +42,3 @@ dependencies:
   - timers
   - transformers
   - trifecta
-
-executables:
-  fake:
-    main: Main.hs
-    source-dirs: .
