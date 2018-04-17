@@ -28,3 +28,4 @@ tags
 # End of https://www.gitignore.io/api/haskell
 01_Eta/**/*.jar
 01_Eta/**/*.class
+Room/Happy/Arith.hs
