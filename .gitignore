@@ -29,3 +29,4 @@ tags
 01_Eta/**/*.jar
 01_Eta/**/*.class
 Room/Happy/Arith.hs
+Room/Alex/Arith.hs
