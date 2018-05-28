@@ -32,6 +32,7 @@ dependencies:
   - parsers
   - raw-strings-qq
   - regex-posix
+  - rio
   - safe-exceptions
   - singleton-bool
   - singletons
@@ -42,6 +43,7 @@ dependencies:
   - timers
   - transformers
   - trifecta
+  - unliftio
 
 executables:
   # stack build --profile && stack exec ghc-callstack

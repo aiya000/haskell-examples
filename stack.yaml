@@ -1,12 +1,15 @@
+resolver: lts-10.6
 flags: {}
 extra-package-dbs: []
 packages:
-- .
+  - .
 extra-deps:
-- freer-effects-0.3.0.1
-- suspend-0.2.0.0
-- time-interval-0.1.1
-- time-out-0.2
-- time-units-1.0.0
-- timers-0.2.0.3
-resolver: lts-10.6
+  - freer-effects-0.3.0.1
+  - rio-0.1.2.0
+  - suspend-0.2.0.0
+  - time-interval-0.1.1
+  - time-out-0.2
+  - time-units-1.0.0
+  - timers-0.2.0.3
+  - typed-process-0.2.2.0
+  - unliftio-0.2.7.0
