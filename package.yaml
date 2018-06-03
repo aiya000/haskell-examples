@@ -30,6 +30,7 @@ dependencies:
   - lens-regex
   - mtl
   - parsers
+  - prettyprinter
   - raw-strings-qq
   - regex-posix
   - rio
