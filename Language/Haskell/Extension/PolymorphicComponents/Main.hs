@@ -1,4 +1,4 @@
-{-# LANGUAGE Rank2Types #-}
+{-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE NoPolymorphicComponents #-}
 
 data MyMonad m = MkMonad
