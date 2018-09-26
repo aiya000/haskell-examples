@@ -8,6 +8,7 @@ data AKind = TypeX | TypeY
 -- Y :: [AKind]
 type Y = '[TypeX, TypeY]
 
+{-# ANN ContainerKind "HLint: ignore Use newtype instead of data" #-}
 data ContainerKind a = Container a
 
 -- Z :: ContainerKind *
