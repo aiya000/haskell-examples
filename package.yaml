@@ -37,6 +37,7 @@ dependencies:
   - safe-exceptions
   - singleton-bool
   - singletons
+  - smallcheck
   - string-qq
   - suspend
   - time-out
