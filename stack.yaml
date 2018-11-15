@@ -1,9 +1,10 @@
-resolver: lts-10.6
+resolver: lts-12.12
 flags: {}
 extra-package-dbs: []
 packages:
   - .
 extra-deps:
+  - extensible-effects-3.1.0.1
   - freer-effects-0.3.0.1
   - rio-0.1.2.0
   - suspend-0.2.0.0
