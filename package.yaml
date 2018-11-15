@@ -20,6 +20,7 @@ dependencies:
   - extensible
   - extensible-effects
   - free
+  - generic-lens
   - ghc-prim
   - here
   - http-client
