@@ -9,6 +9,7 @@ homepage: https://github.com/aiya000/learning-haskell
 
 dependencies:
   #- freer-effects
+  #- idris
   - QuasiText
   - QuickCheck
   - base >= 4.7 && < 5
@@ -25,7 +26,6 @@ dependencies:
   - here
   - http-client
   - http-conduit
-  - idris
   - interpolate
   - lens
   - lens-regex
