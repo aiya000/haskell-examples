@@ -55,15 +55,15 @@ lenses = do
   print $ sugar & field @"moon" .~ 10003
   -- Sum types
   print $ asgore ^. field @"kind"
-  -- Not able to
-  --print $ toriel ^. field @"kind"
+  print $ toriel ^. field @"kind" -- Not able to print $ toriel ^. field @"aggressive"
   -- Positional
   print $ sugar ^. position @1
   print $ sugar ^. position @2
   print $ (10, ("yours", "mine")) ^. position @2 . position @1
+  print $ asgore ^. position @1
+  print $ toriel ^. position @1
   -- Not able to
-  --print $ asgore ^. position @1
-  --print $ toriel ^. position @1
+  --print $ toriel ^. position @2
   -- Typical
   print $ sugar ^. typed @String
   print $ asgore ^. typed @String
@@ -104,9 +104,12 @@ main = lenses >> prisms
 -- "me"
 -- Sugar {sweet = "me", moon = 10003}
 -- ":)"
+-- ":D"
 -- "me"
 -- 1000
 -- "yours"
+-- ":)"
+-- ":D"
 -- "me"
 -- ":)"
 -- Skeleton {skeleton = ";E"}
