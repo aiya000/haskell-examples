@@ -31,7 +31,18 @@ class Serialize a where
   put = gput . from
 
 instance Serialize Int where
-  put = nankaSugoiJissouForInt
+  put 0 = [O]
+  put x = reverse $ f x
+    where
+      f :: Int -> [Bit]
+      f x | x > 0 = let bit  = iso . isZero $ x .&. 0x0001
+                        rest = x `shiftR` 1
+                    in bit : f rest
+          | otherwise = []
+
+      isZero :: Int -> Bool
+      isZero 0 = True
+      isZero _ = False
 
 instance Serialize Char where
   put = put . ord
@@ -55,20 +66,6 @@ instance GSerialize f => GSerialize (M1 i c f) where
 
 instance Serialize a => GSerialize (K1 i a) where
   gput (K1 x) = put x
-
-nankaSugoiJissouForInt :: Int -> [Bit]
-nankaSugoiJissouForInt 0 = [O]
-nankaSugoiJissouForInt x = reverse $ f x
-  where
-    f :: Int -> [Bit]
-    f x | x > 0 = let bit  = iso . isZero $ x .&. 0x0001
-                      rest = x `shiftR` 1
-                  in bit : f rest
-        | otherwise = []
-
-    isZero :: Int -> Bool
-    isZero 0 = True
-    isZero _ = False
 
 main :: IO ()
 main = print $ put sugar
