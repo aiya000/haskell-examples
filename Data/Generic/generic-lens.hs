@@ -68,7 +68,7 @@ lenses = do
   print $ sugar ^. typed @String
   print $ asgore ^. typed @String
   -- Not able to
-  --print $ toriel ^. typed @Int
+  --print $ toriel ^. typed @()
   --print $ point ^. typed @Int
   -- Structual
   print $ sans ^. super @Skeleton
@@ -91,6 +91,8 @@ prisms = do
   print $ asgore ^? _Ctor @"Toriel"
   print (_Ctor @"Asgore" # ":O" :: Fluffy)
   -- Typical
+  print $ asgore ^? _Typed @String
+  print $ toriel ^? _Typed @(String, ())
   print $ toriel ^? _Typed @String
   -- Not able to
   --print $ toriel ^? _Typed @()
@@ -99,8 +101,13 @@ prisms = do
   print $ asgore ^? _As @String
 
 main :: IO ()
-main = lenses >> prisms
+main = do
+  putStrLn "--- lenses"
+  lenses
+  putStrLn "\n--- prisms"
+  prisms
 -- {output}
+-- --- lenses
 -- "me"
 -- Sugar {sweet = "me", moon = 10003}
 -- ":)"
@@ -118,10 +125,14 @@ main = lenses >> prisms
 -- "me"
 -- ":)"
 -- ";E"
+--
+-- --- prisms
 -- Just ("me",1000)
 -- Just (":D",())
 -- Nothing
 -- Asgore {kind = ":O"}
+-- Just ":)"
+-- Just (":D",())
 -- Nothing
 -- Just (":D",())
 -- Just ":)"
