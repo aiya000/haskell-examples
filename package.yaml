@@ -29,6 +29,7 @@ dependencies:
   - interpolate
   - lens
   - lens-regex
+  - megaparsec
   - mtl
   - parsers
   - prettyprinter
