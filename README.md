@@ -1,8 +1,7 @@
-# learning-Haskell
-My Learning for Haskell
+# haskell-examples
+## Index
 
-
-# Index
+TODO
 
 - [Data.Distributive](https://github.com/aiya000/learning-Haskell/master/blob/Data/Distributive/Main.hs)
     - `distribute :: Functor f => f (g a) -> g (f a)`
