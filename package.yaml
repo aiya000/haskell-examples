@@ -17,6 +17,7 @@ dependencies:
   - conduit
   - conduit-extra
   - connection
+  - containers
   - data-default
   - extensible
   - extensible-effects
