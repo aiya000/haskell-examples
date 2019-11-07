@@ -1,14 +1,9 @@
 # haskell-examples
-## Index
 
-TODO
+You can see examples of Module.Foo.Bar on `./Module/Foo/Bar.hs` or `./Module/Foo/Bar/*`.
 
-- [Data.Distributive](https://github.com/aiya000/learning-Haskell/master/blob/Data/Distributive/Main.hs)
-    - `distribute :: Functor f => f (g a) -> g (f a)`
-    - Allow to swap two `Functor`s
+Or
 
-- dependent types | singleton types
-    - [Data/Singletons](https://github.com/aiya000/learning-Haskell/master/blob/Data/Singletons)
-    - [GHC/TypeLits](https://github.com/aiya000/learning-Haskell/master/blob/GHC/TypeLits)
-    - [Language/Haskell/Extension/DataKinds](https://github.com/aiya000/learning-Haskell/master/blob/Language/Haskell/Extension/DataKinds)
-    - [Language/Haskell/Extension/Room](https://github.com/aiya000/learning-Haskell/master/blob/Language/Haskell/Extension/Room)
+- `00_Extensions`: GHC extensions
+- `01_Eta`: Eta language
+- `Room`: Experimental codes
