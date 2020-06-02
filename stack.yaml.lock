@@ -5,78 +5,57 @@
 
 packages:
 - completed:
-    hackage: extensible-effects-3.1.0.1@sha256:16e867d868aa50c9b9a924b66b4a30b8a1026e9bbe6a850763f901a1879856c9,9124
+    hackage: extensible-0.8@sha256:45ca089909ae434329e4d05dc557be94ff04f24c43ff9b915bd90c0599c83211,2911
     pantry-tree:
-      size: 3405
-      sha256: e4580f2b0092c464dd8a903b0df95721280d056059b5d6ea860637edf9625a04
+      size: 2097
+      sha256: d602c9d623afd9186a4d55898ef97f0dfb7f81ffbd5bae86e2238b3694d702fb
   original:
-    hackage: extensible-effects-3.1.0.1
-- completed:
-    hackage: freer-effects-0.3.0.1@sha256:5e5595bd0b3d4a5ffe872f84ff778e08d9032750d87943ea85abe35abdb6adb3,4857
-    pantry-tree:
-      size: 2558
-      sha256: 72f8326d0df6bc97ad69891bcfd3f21206a2db2ba509bb1ef932844edbda3410
-  original:
-    hackage: freer-effects-0.3.0.1
-- completed:
-    hackage: rio-0.1.2.0@sha256:cb2a65cee1c0450815002ca890633215e4544b5c1c9f7091a950142c6efe8f3f,3238
-    pantry-tree:
-      size: 3745
-      sha256: 5014f5fd8dd06d16ecefefeef20d9f9ba58e8c4d1289a243edd9da81eeefcb24
-  original:
-    hackage: rio-0.1.2.0
+    hackage: extensible-0.8@sha256:45ca089909ae434329e4d05dc557be94ff04f24c43ff9b915bd90c0599c83211,2911
 - completed:
     hackage: suspend-0.2.0.0@sha256:0d98526558b773c3ff792664bc45d7a083a32eedb6206d4101a7570869c75a28,1115
     pantry-tree:
       size: 424
       sha256: 70600cf9fc141612dcfb21573c4ccbec59922fb218b384ed380458cf6b0c67e6
   original:
-    hackage: suspend-0.2.0.0
-- completed:
-    hackage: time-interval-0.1.1@sha256:7bfd3601853d1af7caa18248ec10b01701d035ac274a93bb4670fea52a14d4e8,2567
-    pantry-tree:
-      size: 456
-      sha256: 7e259a34960b881f67a47e677eb77906922661c1036c8a5c62bcfc394cc655b7
-  original:
-    hackage: time-interval-0.1.1
+    hackage: suspend-0.2.0.0@sha256:0d98526558b773c3ff792664bc45d7a083a32eedb6206d4101a7570869c75a28,1115
 - completed:
     hackage: time-out-0.2@sha256:b9a6b4dee64f030ecb2a25dca0faff39b3cb3b5fefbb8af3cdec4142bfd291f2,3010
     pantry-tree:
       size: 923
       sha256: dcedaba4d5a1dcfbef65ede20f25b1465ca5d211178fbff5ed6cd8cf75bed1cf
   original:
-    hackage: time-out-0.2
+    hackage: time-out-0.2@sha256:b9a6b4dee64f030ecb2a25dca0faff39b3cb3b5fefbb8af3cdec4142bfd291f2,3010
 - completed:
     hackage: time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1,928
     pantry-tree:
       size: 212
       sha256: 9b516d4195fcea22cd1f4335cfe210e88deca397ba7dacc494d5a2feb69e1af8
   original:
-    hackage: time-units-1.0.0
+    hackage: time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1,928
 - completed:
     hackage: timers-0.2.0.3@sha256:ec91266e5ed73e958857fd07332ed547ea01205133769fba51cc40577549ffe9,1168
     pantry-tree:
       size: 424
       sha256: 6709021bf3b2a194ed4b7ad706092463e990b619bf52d60a1e7af22af98d3c4b
   original:
-    hackage: timers-0.2.0.3
+    hackage: timers-0.2.0.3@sha256:ec91266e5ed73e958857fd07332ed547ea01205133769fba51cc40577549ffe9,1168
 - completed:
-    hackage: typed-process-0.2.2.0@sha256:6c412ae0cf646f6310a3d3ecff42f1fc0107648e302092f31fa82545d76fb907,1698
+    hackage: membership-0@sha256:3a11d8fd53cb1a76bb9273e6c929bbf9d649f109714bf487abb3143be04ddc81,995
     pantry-tree:
-      size: 452
-      sha256: 12b88d4b29399693ef8a334bff9d74b7c9d527094e8224045727dc9b2929dc95
+      size: 408
+      sha256: 3b593e0d14e848e318e745555776ebb25210e5e3dec4fde5d3c08ab51ceddc62
   original:
-    hackage: typed-process-0.2.2.0
+    hackage: membership-0@sha256:3a11d8fd53cb1a76bb9273e6c929bbf9d649f109714bf487abb3143be04ddc81,995
 - completed:
-    hackage: unliftio-0.2.7.0@sha256:6653ba74ef47059b7a170d8c4714cbc707cc75b3eb18236540a4fa35c75d0671,2255
+    hackage: time-interval-0.1.1@sha256:7bfd3601853d1af7caa18248ec10b01701d035ac274a93bb4670fea52a14d4e8,2567
     pantry-tree:
-      size: 1560
-      sha256: c40ff3b8fd556396c3a5a04d038094b9f1663067f00f6908398486747cdbf549
+      size: 456
+      sha256: 7e259a34960b881f67a47e677eb77906922661c1036c8a5c62bcfc394cc655b7
   original:
-    hackage: unliftio-0.2.7.0
+    hackage: time-interval-0.1.1@sha256:7bfd3601853d1af7caa18248ec10b01701d035ac274a93bb4670fea52a14d4e8,2567
 snapshots:
 - completed:
-    size: 498186
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/13/22.yaml
-    sha256: d4f07dc3d5658260c2fe34266ad7618f6c84d34decf559c9c786ac1cfccf4e7b
-  original: lts-13.22
+    size: 491163
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/15/4.yaml
+    sha256: bc60043a06b58902b533baa80fb566c0ec495c41e428bc0f8c1e8c15b2a4c468
+  original: lts-15.4

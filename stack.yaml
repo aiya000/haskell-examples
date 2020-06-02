@@ -1,16 +1,13 @@
-resolver: lts-13.22
+resolver: lts-15.4
 flags: {}
 extra-package-dbs: []
 packages:
   - .
 extra-deps:
-  - extensible-effects-3.1.0.1
-  - freer-effects-0.3.0.1
-  - rio-0.1.2.0
-  - suspend-0.2.0.0
-  - time-interval-0.1.1
-  - time-out-0.2
-  - time-units-1.0.0
-  - timers-0.2.0.3
-  - typed-process-0.2.2.0
-  - unliftio-0.2.7.0
+  - extensible-0.8@sha256:45ca089909ae434329e4d05dc557be94ff04f24c43ff9b915bd90c0599c83211,2911
+  - suspend-0.2.0.0@sha256:0d98526558b773c3ff792664bc45d7a083a32eedb6206d4101a7570869c75a28,1115
+  - time-out-0.2@sha256:b9a6b4dee64f030ecb2a25dca0faff39b3cb3b5fefbb8af3cdec4142bfd291f2,3010
+  - time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1,928
+  - timers-0.2.0.3@sha256:ec91266e5ed73e958857fd07332ed547ea01205133769fba51cc40577549ffe9,1168
+  - membership-0@sha256:3a11d8fd53cb1a76bb9273e6c929bbf9d649f109714bf487abb3143be04ddc81,995
+  - time-interval-0.1.1@sha256:7bfd3601853d1af7caa18248ec10b01701d035ac274a93bb4670fea52a14d4e8,2567
